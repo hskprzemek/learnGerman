@@ -13,6 +13,8 @@ public class UserRepository {
 
     public boolean loginUser(String userLogin, String pass) {
         Query createNamedQuery = entityManager.createNamedQuery("checkCredentials");
+        createNamedQuery.setParameter("login", userLogin);
+        createNamedQuery.setParameter("password", pass);
         return createNamedQuery.getResultList().size() > 0;
     }
 }

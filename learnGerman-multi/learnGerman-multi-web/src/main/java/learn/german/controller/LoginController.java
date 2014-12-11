@@ -4,9 +4,11 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import learn.german.dto.LoginForm;
+import learn.german.repository.UserRepository;
 
 @Model
 @SessionScoped
@@ -15,6 +17,9 @@ public class LoginController {
     private boolean loggedIn = false;
 
     private LoginForm login;
+
+    @Inject
+    private UserRepository userRepository;
 
     public boolean isLoggedIn() {
         return loggedIn;
@@ -36,8 +41,11 @@ public class LoginController {
     }
 
     public String logInToApp() {
-
-        System.out.println(login.getUser());
+        boolean successfulLogin = userRepository.loginUser(login.getUser(), login.getPass());
+        if (successfulLogin) {
+            loggedIn = true;
+            return "index";
+        }
         return "";
     }
 
