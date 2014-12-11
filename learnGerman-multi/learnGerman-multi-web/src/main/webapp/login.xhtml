@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Learn german</title>
+</h:head>
+<h:body bgcolor="white">	
+	<f:subview id="loggedIn" rendered="#{loginController.loggedIn}">
+		Hej
+	</f:subview>
+	<f:subview id="notLoggedIn" rendered="#{not loginController.loggedIn}">
+		<h:form >
+			<h:inputText value="#{login.user}" />
+			<h:inputSecret value="#{login.pass}" />
+			<h:commandButton value="Login" action="#{loginController.logInToApp}" />
+		</h:form>
+	</f:subview>
+</h:body>
+</html>
