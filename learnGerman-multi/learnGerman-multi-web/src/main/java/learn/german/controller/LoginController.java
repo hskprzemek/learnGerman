@@ -1,9 +1,10 @@
 package learn.german.controller;
 
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,7 +13,7 @@ import learn.german.repository.UserRepository;
 
 @Model
 @SessionScoped
-public class LoginController {
+public class LoginController implements Serializable{
 
     private boolean loggedIn = false;
 
