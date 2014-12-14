@@ -25,15 +25,7 @@ import learn.german.service.WordService;
 
 @Model
 public class WordController {
-    private String text;
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
+ 
     @Inject 
     Logger logger;
     
@@ -45,6 +37,10 @@ public class WordController {
     
     public List<Noun> getNouns(){
         return wordRepository.getNouns();
+    }
+    
+    public List<Verb> getVerbs() {
+        return wordRepository.getVerbs();
     }
     
     public Gender[] getGenders() {
@@ -74,18 +70,24 @@ public class WordController {
         return verb;
     }
     
-    public String addNoun() {
-        System.out.println(noun.toString());
-        System.out.println(noun.getSingularForm());
-        System.out.println(noun.getPluralForm());
-        System.out.println(noun.getGender());
+    public String addNoun() { 
         wordService.addNoun(noun);
-        text = noun.getSingularForm() + " " + noun.getPluralForm();
         noun = null;
         return "";
     }
      public String editNoun(int id) {
          noun = wordRepository.getNoun(id);
+         return "";
+     }
+     
+     public String addVerb() {
+         wordService.addVerb(verb);
+         verb = null;
+         return "";
+     }
+     
+     public String editVerb(int id) {
+         verb = wordRepository.getVerb(id);
          return "";
      }
     

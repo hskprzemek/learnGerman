@@ -30,6 +30,10 @@ public class WordService {
         entityManager.merge(verb);
     }
     
+    public Verb editVerb(Verb verb) {
+        return entityManager.merge(verb);
+    }
+    
     public Noun editNoun(Noun noun) {
         return entityManager.merge(noun);
     }

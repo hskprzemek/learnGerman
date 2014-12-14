@@ -14,26 +14,89 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h:panelGrid>
-            <h:form>
-            <h:outputLabel>Infinitive</h:outputLabel>
-            <p:inputText value="#{verb.infinitiveForm}"/>
-            <h:outputLabel>1st singular form</h:outputLabel>
-            <p:inputText value="#{verb.singular1stForm}"/>
-            <h:outputLabel>2nd singular form</h:outputLabel>
-            <p:inputText value="#{verb.singular2ndForm}"/>
-            <h:outputLabel>3rd singular form</h:outputLabel>
-            <p:inputText value="#{verb.singular3rdForm}"/>
-            <h:outputLabel>1st plural form</h:outputLabel>
-            <p:inputText value="#{verb.plural1stForm}"/>
-            <h:outputLabel>2nd plural form</h:outputLabel>
-            <p:inputText value="#{verb.PLURAL2ndForm}"/>
-            <h:outputLabel>3rd plural form</h:outputLabel>
-            <p:inputText value="#{verb.plural3rdForm}"/>
-            <p:commandButton update="nouns" action="#{wordController.addVerb}" value="Save"  />
+        <h:form>
+            <h:panelGrid columns="4">
+                <h:outputLabel>Infinitive</h:outputLabel>
+                <p:inputText value="#{verb.infinitiveForm}"/>
+                <h:outputLabel>Perfect 3rd form</h:outputLabel>
+                <p:inputText value="#{verb.perfect3rdForm}"/>
+                <h:outputLabel>1st singular form</h:outputLabel>
+                <p:inputText value="#{verb.singular1stForm}"/>
+                <h:outputLabel>1st plural form</h:outputLabel>
+                <p:inputText value="#{verb.plural1stForm}"/>
+                <h:outputLabel>2nd singular form</h:outputLabel>
+                <p:inputText value="#{verb.singular2ndForm}"/>
+                <h:outputLabel>2nd plural form</h:outputLabel>
+                <p:inputText value="#{verb.plural2ndForm}"/>
+                <h:outputLabel>3rd singular form</h:outputLabel>
+                <p:inputText value="#{verb.singular3rdForm}"/>
+                <h:outputLabel>3rd plural form</h:outputLabel>
+                <p:inputText value="#{verb.plural3rdForm}"/>
+            </h:panelGrid>
+            <p:commandButton update="verbs" action="#{wordController.addVerb}" value="Save"  />
+
+            <p:dataTable value="#{wordController.verbs}" var="_verb" id="verbs" >
+                <p:column width="4%">
+                    <f:facet name="header">
+                        <h:outputText value="Id"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.id}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Infinitive"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.infinitiveForm}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Singular 1stForm"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.singular1stForm}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Singular 2ndForm"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.singular2ndForm}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Singular 3rdForm"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.singular3rdForm}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Plural 1stForm"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.plural1stForm}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Plural 2ndForm"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.plural2ndForm}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Plural 3rdForm"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.plural3rdForm}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Plural 3rdForm"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.plural3rdForm}"></h:outputText>
+                </p:column>
+                <p:column width="12%">
+                    <f:facet name="header">
+                        <h:outputText value="Perfect 3rdForm"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_verb.perfect3rdForm}"></h:outputText>
+                </p:column>
+            </p:dataTable>
         </h:form>
-        </h:panelGrid>
     </h:body>
-    
-    
 </html>
