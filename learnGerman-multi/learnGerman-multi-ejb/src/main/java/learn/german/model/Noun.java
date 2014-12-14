@@ -17,16 +17,15 @@ public class Noun extends Word {
     private static final long serialVersionUID = 1L;
    
     private String singularForm;
-    
     private String pluralForm;
-    
     private Gender gender;
-    
-    @Override
-    public int hashCode() {
-        int hash = 0;
-         hash += (int) id;
-        return hash;
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
     
     public String getSingularForm() {
@@ -43,6 +42,13 @@ public class Noun extends Word {
 
     public void setPluralForm(String pluralForm) {
         this.pluralForm = pluralForm;
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+         hash += (int) id;
+        return hash;
     }
     
     @Override

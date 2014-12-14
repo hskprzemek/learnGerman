@@ -6,12 +6,10 @@
 package learn.german.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import learn.german.model.util.Gender;
 
 /**
  *
@@ -25,6 +23,15 @@ public class Word implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected int id;    
    
+    private String meaning;
+
+    public String getMeaning() {
+        return meaning;
+    }
+
+    public void setMeaning(String meaning) {
+        this.meaning = meaning;
+    }
     public int getId() {
         return id;
     }

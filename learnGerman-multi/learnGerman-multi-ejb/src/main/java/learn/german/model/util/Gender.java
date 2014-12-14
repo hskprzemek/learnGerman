@@ -7,12 +7,27 @@ package learn.german.model.util;
 
 /**
  *
- * @author jakubowski
+ * @author cartman
  */
 public enum Gender {
     
-    MASCULINE, 
-    FEMININE, 
-    NEUTER
+    MASCULINE  ("M"),  //calls constructor with value 3
+    FEMININE("F"),  //calls constructor with value 2
+    NEUTER  ("NT");   //calls constructor with value 1
     
+    //calls constructor with value 1
+    public String getShortName() {
+        return shortName;
+    }    
+
+
+    private final String shortName;
+
+    Gender(String shortName) {
+        this.shortName = shortName;
+    }
+    
+    
+    
+        
 }

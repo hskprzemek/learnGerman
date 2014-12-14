@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Words edit</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid id="nounForm">
+                <h:outputLabel for="genderSelect">Grammar gender</h:outputLabel>
+                <h:selectOneMenu id="genderSelect" value="#{noun.gender}">
+                    <f:selectItems value="#{wordController.genders}"/>
+                </h:selectOneMenu>
+                <h:inputHidden value="#{noun.id}"/>
+                <h:outputLabel for="singularInput">Singular</h:outputLabel>
+                <p:inputText id="singularInput" value="#{noun.singularForm}"/>
+                <h:outputLabel for="pluralInput">Plural</h:outputLabel>
+                <p:inputText id="pluralInput" value="#{noun.pluralForm}"/>    
+                <h:outputLabel for="meaningInput">Meaning</h:outputLabel>
+                <p:inputText id="meainingInput" value="#{noun.meaning}"/>    
+                <p:commandButton update="nouns" action="#{wordController.addNoun}" value="Save"  />
+            </h:panelGrid>
+            <p:dataTable pageLinks="3" value="#{wordController.nouns}" var="_noun" id="nouns" >
+                <p:column width="10%">
+                    <f:facet name="header">
+                        <h:outputText value="Id"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_noun.id}"></h:outputText>
+                </p:column>
+                <p:column width="15%">
+                    <f:facet name="header" >
+                        <h:outputText value="Gender"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_noun.gender.shortName}"></h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Single Form"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_noun.singularForm}"></h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Plural Form"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_noun.pluralForm}"></h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Meaning"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{_noun.meaning}"></h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Button"></h:outputText>
+                    </f:facet>
+                    <h:commandButton value="Edit" action="#{wordController.editNoun(_noun.id)}" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
