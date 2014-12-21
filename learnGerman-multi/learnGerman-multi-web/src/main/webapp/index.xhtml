@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{msg.pageTitle}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="./mainTemplate.xhtml">
+            <ui:define name="top">
+                <ui:include src="login.xhtml"/>
+            </ui:define>          
+            <ui:define name="content">                
+                <div id="menu">
+                <f:view >
+                    <f:subview id="mainMenu" rendered="#{mainMenu.main}">
+                        HEJ HO
+                    </f:subview>
+                    <f:subview id="editVerbs" rendered="#{mainMenu.editVerbs}">
+                        <ui:include src="edit/verbs.xhtml"/>
+                    </f:subview>
+                    <f:subview id="editNouns" rendered="#{mainMenu.editNouns}">
+                        <ui:include src="edit/nouns.xhtml"/>
+                        
+                    </f:subview>
+                </f:view>
+                    </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -132,7 +132,7 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <build>
+<!--            <build>
                 <plugins>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -142,7 +142,7 @@
                         </configuration>
                     </plugin>
                 </plugins>
-            </build>
+            </build>-->
         </profile>
 
         <profile>

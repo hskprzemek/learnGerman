@@ -10,31 +10,38 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>TODO supply a title</title>
+        <title><h:outputLabel value="#{msg.page_title}"/></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
         <h:form>
-            <h:panelGrid columns="4">
-                <h:outputLabel>Infinitive</h:outputLabel>
-                <p:inputText value="#{verb.infinitiveForm}"/>
-                <h:outputLabel>Perfect 3rd form</h:outputLabel>
-                <p:inputText value="#{verb.perfect3rdForm}"/>
-                <h:outputLabel>1st singular form</h:outputLabel>
-                <p:inputText value="#{verb.singular1stForm}"/>
-                <h:outputLabel>1st plural form</h:outputLabel>
-                <p:inputText value="#{verb.plural1stForm}"/>
-                <h:outputLabel>2nd singular form</h:outputLabel>
-                <p:inputText value="#{verb.singular2ndForm}"/>
-                <h:outputLabel>2nd plural form</h:outputLabel>
-                <p:inputText value="#{verb.plural2ndForm}"/>
-                <h:outputLabel>3rd singular form</h:outputLabel>
-                <p:inputText value="#{verb.singular3rdForm}"/>
-                <h:outputLabel>3rd plural form</h:outputLabel>
-                <p:inputText value="#{verb.plural3rdForm}"/>
-            </h:panelGrid>
-            <p:commandButton update="verbs" action="#{wordController.addVerb}" value="Save"  />
-
+            <p:panelGrid columns="4">
+                <p:outputLabel for="infinitiveForm" value="#{msg.verbs_form_infinitive}"/>
+                <p:inputText id="infinitiveForm" value="#{verb.infinitiveForm}"/>
+                <p:outputLabel for="meaningForm" value="#{msg.verbs_form_meaning}"/>
+                <p:inputText id="meaningForm" value="#{verb.meaning}"/>
+                <p:outputLabel for="presentPerfect" value="#{msg.verbs_form_pefect3rdForm}"/>                
+                <p:inputText id="presentPerfect" value="#{verb.presentPerfectForm}"/>
+                <p:outputLabel for="perfect3rdFormSelect" value="#{msg.verbs_form_pefect3rdFormType}"/>
+                <h:selectOneMenu id="perfect3rdFormSelect" value="#{verb.perfectMode}">
+                    <f:selectItems value="#{wordController.perfect3rdForms}"/>
+                </h:selectOneMenu>                
+                <p:outputLabel for="Singular1St" value="#{msg.verbs_form_presentSimple_1st_singular}"/>
+                <p:inputText id="Singular1St" value="#{verb.presentSimple.singular1stForm}"/>
+                <p:outputLabel for="Plural1st" value="#{msg.verbs_form_presentSimple_1st_plural}"/>
+                <p:inputText  id="Plural1st" value="#{verb.presentSimple.plural1stForm}"/>
+                <p:outputLabel for="Singular2nd" value="#{msg.verbs_form_presentSimple_2nd_singular}"/>
+                <p:inputText id="Singular2nd" value="#{verb.presentSimple.singular2ndForm}"/>
+                <p:outputLabel for="Plural2nd" value="#{msg.verbs_form_presentSimple_2nd_plural}"/>
+                <p:inputText id="Plural2nd" value="#{verb.presentSimple.plural2ndForm}"/>
+                <p:outputLabel for="Singular3rd" value="#{msg.verbs_form_presentSimple_3rd_singular}"/>
+                <p:inputText id="Singular3rd" value="#{verb.presentSimple.singular3rdForm}"/>
+                <p:outputLabel for="Plural3rd" value="#{msg.verbs_form_presentSimple_3rd_plural}"/>
+                <p:inputText id="Plural3rd" value="#{verb.presentSimple.plural3rdForm}"/>
+                <h:panelGroup style="align:center;">
+                    <p:commandButton update="verbs" action="#{wordController.addVerb}" value="#{msg.verbs_form_save}"  />
+                </h:panelGroup>
+            </p:panelGrid>
             <p:dataTable value="#{wordController.verbs}" var="_verb" id="verbs" >
                 <p:column width="4%">
                     <f:facet name="header">
@@ -52,49 +59,43 @@ and open the template in the editor.
                     <f:facet name="header">
                         <h:outputText value="Singular 1stForm"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{_verb.singular1stForm}"></h:outputText>
+                    <h:outputText value="#{_verb.presentSimple.singular1stForm}"></h:outputText>
                 </p:column>
                 <p:column width="12%">
                     <f:facet name="header">
                         <h:outputText value="Singular 2ndForm"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{_verb.singular2ndForm}"></h:outputText>
+                    <h:outputText value="#{_verb.presentSimple.singular2ndForm}"></h:outputText>
                 </p:column>
                 <p:column width="12%">
                     <f:facet name="header">
                         <h:outputText value="Singular 3rdForm"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{_verb.singular3rdForm}"></h:outputText>
+                    <h:outputText value="#{_verb.presentSimple.singular3rdForm}"></h:outputText>
                 </p:column>
                 <p:column width="12%">
                     <f:facet name="header">
                         <h:outputText value="Plural 1stForm"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{_verb.plural1stForm}"></h:outputText>
+                    <h:outputText value="#{_verb.presentSimple.plural1stForm}"></h:outputText>
                 </p:column>
                 <p:column width="12%">
                     <f:facet name="header">
                         <h:outputText value="Plural 2ndForm"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{_verb.plural2ndForm}"></h:outputText>
+                    <h:outputText value="#{_verb.presentSimple.plural2ndForm}"></h:outputText>
                 </p:column>
                 <p:column width="12%">
                     <f:facet name="header">
                         <h:outputText value="Plural 3rdForm"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{_verb.plural3rdForm}"></h:outputText>
-                </p:column>
-                <p:column width="12%">
-                    <f:facet name="header">
-                        <h:outputText value="Plural 3rdForm"></h:outputText>
-                    </f:facet>
-                    <h:outputText value="#{_verb.plural3rdForm}"></h:outputText>
-                </p:column>
+                    <h:outputText value="#{_verb.presentSimple.plural3rdForm}"></h:outputText>
+                </p:column>                
                 <p:column width="12%">
                     <f:facet name="header">
                         <h:outputText value="Perfect 3rdForm"></h:outputText>
                     </f:facet>
-                    <h:outputText value="#{_verb.perfect3rdForm}"></h:outputText>
+                    <h:outputText value="#{_verb.presentPerfectForm}"></h:outputText>
                 </p:column>
             </p:dataTable>
         </h:form>

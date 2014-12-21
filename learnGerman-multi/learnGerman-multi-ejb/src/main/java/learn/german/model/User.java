@@ -8,9 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "User")
+@Table(name="Users")
 @NamedQueries({ @NamedQuery(name = "checkCredentials", query = "select u from User u where u.login = :login AND u.password = :password"),
         @NamedQuery(name = "findByLogin", query = "select u from User u where u.login = :login") })
 public class User implements Serializable {
@@ -29,6 +30,10 @@ public class User implements Serializable {
     private String lastName;
     private String email;
 
+    @Transient
+    public boolean isAdmin() {
+        return true;
+    }
     public int getId() {
         return id;
     }

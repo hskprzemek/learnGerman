@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{msg.pageTitle}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                <p:outputLabel for="registerFirstName" value="#{msg.register_firstName}"/>
+                <p:inputText id="registerFirstName" value="#{user.firstName}"/>
+                <p:outputLabel for="registerFirstName" value="#{msg.register_lastName}"/>
+                <p:inputText id="registerLastName" value="#{user.lastName}"/>
+                <p:outputLabel for="registerFirstName" value="#{msg.register_login}"/>
+                <p:inputText id="login" value="#{user.login}"/>
+                <p:outputLabel for="registerFirstName" value="#{msg.register_password}"/>
+                <p:password id="password" value="#{user.password}"/>
+                <p:outputLabel for="registerFirstName" value="#{msg.register_email}"/>
+                <p:inputText id="email" value="#{user.email}"/>
+                <p:commandButton ajax="false" action="#{userController.registerUser}" value="#{msg.register_registerUser}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

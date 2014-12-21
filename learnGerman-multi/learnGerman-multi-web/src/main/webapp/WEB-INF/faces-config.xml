@@ -26,5 +26,21 @@
 
    <!-- Write your navigation rules here. You are encouraged to use CDI for 
       creating @Named managed beans. -->
-
+      <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>register</from-outcome>
+            <to-view-id>/register.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <application>
+     	   <locale-config>
+     	        <default-locale>en</default-locale>
+                <supported-locale>pl</supported-locale>
+     	   </locale-config>
+	   <resource-bundle>
+		<base-name>learn.german.message</base-name>
+		<var>msg</var>
+	   </resource-bundle>
+     </application>
 </faces-config>

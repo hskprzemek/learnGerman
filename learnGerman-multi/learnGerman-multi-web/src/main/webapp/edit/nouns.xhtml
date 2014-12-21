@@ -15,54 +15,57 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:form>
-            <h:panelGrid id="nounForm">
-                <h:outputLabel for="genderSelect">Grammar gender</h:outputLabel>
-                <h:selectOneMenu id="genderSelect" value="#{noun.gender}">
+            <p:panelGrid columns="4" >
+                <p:outputLabel for="genderSelect" value="#{msg.nouns_form_gender}"/>
+                <p:selectOneRadio id="genderSelect" value="#{noun.gender}" required="true">
                     <f:selectItems value="#{wordController.genders}"/>
-                </h:selectOneMenu>
+                </p:selectOneRadio>
                 <h:inputHidden value="#{noun.id}"/>
-                <h:outputLabel for="singularInput">Singular</h:outputLabel>
+                <h:panelGroup/>
+                <p:outputLabel for="singularInput" value="#{msg.nouns_form_singular}"/>
                 <p:inputText id="singularInput" value="#{noun.singularForm}"/>
-                <h:outputLabel for="pluralInput">Plural</h:outputLabel>
+                <p:outputLabel for="pluralInput" value="#{msg.nouns_form_plural}"/>
                 <p:inputText id="pluralInput" value="#{noun.pluralForm}"/>    
-                <h:outputLabel for="meaningInput">Meaning</h:outputLabel>
-                <p:inputText id="meainingInput" value="#{noun.meaning}"/>    
-                <p:commandButton update="nouns" action="#{wordController.addNoun}" value="Save"  />
-            </h:panelGrid>
+                <p:outputLabel for="meaningInput" value="#{msg.nouns_form_meaning}"/>
+                <p:inputText id="meaningInput" value="#{noun.meaning}"/>    
+                <h:panelGroup>
+                    <p:commandButton update="nouns" action="#{wordController.addNoun}" value="#{msg.nouns_form_save}"  />
+                </h:panelGroup>
+            </p:panelGrid>
             <p:dataTable pageLinks="3" value="#{wordController.nouns}" var="_noun" id="nouns" >
                 <p:column width="10%">
                     <f:facet name="header">
-                        <h:outputText value="Id"></h:outputText>
+                        <h:outputText value="#{msg.nouns_table_header_id}"/>
                     </f:facet>
-                    <h:outputText value="#{_noun.id}"></h:outputText>
+                    <h:outputText value="#{_noun.id}"/>
                 </p:column>
                 <p:column width="15%">
                     <f:facet name="header" >
-                        <h:outputText value="Gender"></h:outputText>
+                        <h:outputText value="#{msg.nouns_table_header_gender}"/>
                     </f:facet>
-                    <h:outputText value="#{_noun.gender.shortName}"></h:outputText>
+                    <h:outputText value="#{_noun.gender.shortName}"/>
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="Single Form"></h:outputText>
+                        <h:outputText value="#{msg.nouns_table_header_singular}"/>
                     </f:facet>
-                    <h:outputText value="#{_noun.singularForm}"></h:outputText>
+                    <h:outputText value="#{_noun.singularForm}"/>
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="Plural Form"></h:outputText>
+                        <h:outputText value="#{msg.nouns_table_header_plural}"/>
                     </f:facet>
-                    <h:outputText value="#{_noun.pluralForm}"></h:outputText>
+                    <h:outputText value="#{_noun.pluralForm}"/>
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="Meaning"></h:outputText>
+                        <h:outputText value="#{msg.nouns_table_header_meaning}"/>
                     </f:facet>
-                    <h:outputText value="#{_noun.meaning}"></h:outputText>
+                    <h:outputText value="#{_noun.meaning}"/>
                 </p:column>
                 <p:column>
                     <f:facet name="header">
-                        <h:outputText value="Button"></h:outputText>
+                        <h:outputText value="Button"/>
                     </f:facet>
                     <h:commandButton value="Edit" action="#{wordController.editNoun(_noun.id)}" />
                 </p:column>

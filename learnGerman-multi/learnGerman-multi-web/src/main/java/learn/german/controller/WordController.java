@@ -13,6 +13,7 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 import learn.german.model.Noun;
+import learn.german.model.PresentPerfectMode;
 import learn.german.model.Verb;
 import learn.german.model.util.Gender;
 import learn.german.repository.WordRepository;
@@ -45,6 +46,10 @@ public class WordController {
     
     public Gender[] getGenders() {
         return Gender.values();
+    }
+    
+    public PresentPerfectMode[] getPerfect3rdForms() {
+        return PresentPerfectMode.values();
     }
     
     private Noun noun;

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import learn.german.dto.LoginForm;
+import learn.german.model.User;
 import learn.german.repository.UserRepository;
 
 @Model
@@ -19,6 +20,17 @@ public class LoginController implements Serializable{
 
     private LoginForm login;
 
+    private User loggedInUser; 
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+    
+    
     @Inject
     private UserRepository userRepository;
 
@@ -43,7 +55,9 @@ public class LoginController implements Serializable{
 
     public String logInToApp() {
         boolean successfulLogin = userRepository.loginUser(login.getUser(), login.getPass());
+        
         if (successfulLogin) {
+            loggedInUser = userRepository.getUser(login.getUser());
             loggedIn = true;
             return "index";
         }
